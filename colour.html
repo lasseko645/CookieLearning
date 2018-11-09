@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Testside til cookies</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <script>
+
+    window.onload = function(){
+        if (document.cookie.length != 0) {
+            var cookieValue = document.cookie.split("=");
+            document.bgColor = cookieValue[1];
+            document.getElementById("dropdown").value = cookieValue[1];
+        }
+    }
+
+    function setcolor(){
+        var selectedColour = document.getElementById("dropDown").value;
+        if (selectedColour != "select colour") {
+
+            document.bgColor = selectedColour;
+            document.cookie = "color=" + selectedColour + ";expires=fri, 5 aug 2019 01:00:00 UTC" + ";";
+            
+        }
+    }
+    </script>
+
+    <select id="dropDown" onchange="setcolor()">
+        <option>select colour</option>
+        <option>Red</option>
+        <option>Blue</option>
+        <option>Green</option>
+        <option>Yellow</option>
+    </select>
+    
+</body>
+</html>
